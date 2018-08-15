@@ -13,11 +13,11 @@ public class Updater {
 	@SuppressWarnings("unchecked")
 	public static HashMap<String, Object>[] getMatchData(JSONObject matchJSON) {
 		HashMap<String, Object>[] infoTable = (HashMap<String, Object>[]) new HashMap[6];
-		/*for(int x = 0; x < infoTable.length; x++) {
+		for(int x = 0; x < infoTable.length; x++) {
 			infoTable[x] = new HashMap<String, Object>();
 		}
 		
-		JSONObject json = TBA.getJSON(TBA.getMatch(matchNum));*/
+		//JSONObject json = TBA.getJSON(TBA.getMatch(matchNum));
 		
 		// Gets the team number for each team
 		JSONObject allianceJSON = matchJSON.getJSONObject("alliances");
