@@ -11,16 +11,16 @@ public class Updater {
 	
 	// Returns a HashMap<String, Object> array that contains the match data for each team
 	@SuppressWarnings("unchecked")
-	public static HashMap<String, Object>[] getMatchData(int matchNum) {
+	public static HashMap<String, Object>[] getMatchData(JSONObject matchJSON) {
 		HashMap<String, Object>[] infoTable = (HashMap<String, Object>[]) new HashMap[6];
-		for(int x = 0; x < infoTable.length; x++) {
+		/*for(int x = 0; x < infoTable.length; x++) {
 			infoTable[x] = new HashMap<String, Object>();
 		}
 		
-		JSONObject json = TBA.getJSON(TBA.getMatch(matchNum));
+		JSONObject json = TBA.getJSON(TBA.getMatch(matchNum));*/
 		
 		// Gets the team number for each team
-		JSONObject allianceJSON = json.getJSONObject("alliances");
+		JSONObject allianceJSON = matchJSON.getJSONObject("alliances");
 		JSONObject blueJSON = allianceJSON.getJSONObject("blue");
 		JSONObject redJSON = allianceJSON.getJSONObject("red");
 		for(int x = 0; x < 3; x++) {
@@ -28,7 +28,7 @@ public class Updater {
 			infoTable[x+3].put("teamNumber", redJSON.getJSONArray("team_keys").get(x).toString().substring(3));
 		}
 		
-		JSONObject breakdownJSON = json.getJSONObject("score_breakdown");
+		JSONObject breakdownJSON = matchJSON.getJSONObject("score_breakdown");
 		blueJSON = breakdownJSON.getJSONObject("blue");
 		redJSON = breakdownJSON.getJSONObject("red");
 		
