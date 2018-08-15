@@ -6,6 +6,7 @@ public class Updater {
 	// Arrays containing all the keys of interest
 	// This array contains all the keys where the values are the same for each team on the same alliance
 	private final static String[] genericKeys = {"teleopScaleOwnershipSec", "autoScaleOwnershipSec", "vaultPoints", "autoSwitchAtZero", "teleopOwnershipPoints", "teleopPoints", "autoOwnershipPoints", "autoPoints", "teleopSwitchOwnershipSec"};
+	private final static String[] tempKeys = {"vaultPoints", "teleopPoints", "autoPoints"};
 	// This array contains all the keys where the values differ between teams on the same alliance
 	private final static String[] uniqueKeys = {};
 	
@@ -41,10 +42,10 @@ public class Updater {
 		}
 		
 		// Extracts all the values associated with all the genericKeys
-		for(int k = 0; k < genericKeys.length; k++) {
+		for(int k = 0; k < tempKeys.length; k++) {
 			for(int x = 0; x < 3; x++) {
-				infoTable[x].put(genericKeys[k], blueJSON.get(genericKeys[k]));
-				infoTable[x+3].put(genericKeys[k], redJSON.get(genericKeys[k]));
+				infoTable[x].put(tempKeys[k], blueJSON.get(tempKeys[k]));
+				infoTable[x+3].put(tempKeys[k], redJSON.get(tempKeys[k]));
 			}
 		}
 		
